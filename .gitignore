@@ -1,0 +1,8 @@
+# Virtual environment — machine-generated, recreate with: python3 -m venv venv
+venv/
+
+# Python cache — auto-generated compiled files
+__pycache__/
+
+# Mac system file
+.DS_Store
