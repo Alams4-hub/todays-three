@@ -5,6 +5,18 @@
 </head>
 <body>
     <h1>Today's Three</h1>
+    <form method="POST">
+    <input type="text" name="task1">
+    <input type="text" name="task2">
+    <input type="text" name="task3">
+    <button type="submit">Save my three</button>
+    </form>
+    <h2>Your three for today:</h2>
+<ul>
+    <li>{{ task1 }}</li>
+    <li>{{ task2 }}</li>
+    <li>{{ task3 }}</li>
+</ul>
 </body>
 </html>
 
