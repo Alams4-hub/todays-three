@@ -6,3 +6,6 @@ __pycache__/
 
 # Mac system file
 .DS_Store
+
+# the tasks.db - it's already gonna be created with the code 
+tasks.db
