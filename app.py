@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from datetime import date
 
 app = Flask(__name__)
@@ -41,6 +41,14 @@ def get_todays_tasks():
     return row
 
 
+def mark_done(task_id):
+    conn = get_db()
+    conn.execute("UPDATE tasks SET done = 1 WHERE id = ?", (task_id,))
+    conn.commit()
+    conn.close()
+
+
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     task1 = ""
@@ -58,7 +66,13 @@ def home():
         add_task(task3, today)
     tasks = get_todays_tasks()    
     return render_template("index.html", tasks=tasks)
- 
+
+
+@app.route("/done", methods = ["POST"])
+def done():
+    task_id = request.form["task_id"]
+    mark_done(task_id)
+    return redirect("/")
 
 if __name__ == "__main__":
     init_db()
